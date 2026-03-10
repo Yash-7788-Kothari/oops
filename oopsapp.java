@@ -1,26 +1,71 @@
 /**
- * OOPSBannerApp UC5 – Render OOPS as Banner using Inline Array Initialization
+ * OOPSBannerApp UC6 – OOPS Banner Application (Use Case 6)
+ * This use case extends UC5 by implementing a modular approach to generate each
+ * letter's pattern through dedicated methods.
  *
  * @author Yash Kothari
- * @version 5.0
+ * @version 6.0
  */
-
 public class OOPSBannerApp {
 
-    public static void main(String[] args) {
+    // Pads a string to a fixed width with spaces on the right
+    public static String pad(String s, int width) {
+        return String.format("%-" + width + "s", s);
+    }
 
-        String[] lines = {
-            String.join(" ", "  ***  ", "  ***  ", " ***** ", " ***** "),
-            String.join(" ", " *   * ", " *   * ", " *   * ", " *     "),
-            String.join(" ", " *   * ", " *   * ", " ***** ", " ***** "),
-            String.join(" ", " *   * ", " *   * ", " *     ", "     * "),
-            String.join(" ", " *   * ", " *   * ", " *     ", "     * "),
-            String.join(" ", " *   * ", " *   * ", " *     ", " *   * "),
-            String.join(" ", "  ***  ", "  ***  ", " *     ", " ***** ")
+    // Method for letter 'O' - fixed width: 7
+    public static String[] getOPattern() {
+        return new String[] {
+            "  ***  ",
+            " ** ** ",
+            "**   **",
+            "**   **",
+            "**   **",
+            " ** ** ",
+            "  ***  "
         };
+    }
 
-        for (String line : lines) {
-            System.out.println(line);
+    // Method for letter 'P' - fixed width: 7
+    public static String[] getPPattern() {
+        return new String[] {
+            "****** ",
+            "**  ** ",
+            "**  ** ",
+            "****** ",
+            "**     ",
+            "**     ",
+            "**     "
+        };
+    }
+
+    // Method for letter 'S' - fixed width: 7
+    public static String[] getSPattern() {
+        return new String[] {
+            "***** ",
+            "**     ",
+            "**     ",
+            " ***   ",
+            "   **  ",
+            "   **  ",
+            "***** "
+        };
+    }
+
+    public static void main(String[] args) {
+        String[] oPattern = getOPattern();
+        String[] pPattern = getPPattern();
+        String[] sPattern = getSPattern();
+
+        int width = 7;
+
+        for (int i = 0; i < oPattern.length; i++) {
+            System.out.println(
+                pad(oPattern[i], width) + "  " +
+                pad(oPattern[i], width) + "  " +
+                pad(pPattern[i], width) + "  " +
+                pad(sPattern[i], width)
+            );
         }
     }
 }
